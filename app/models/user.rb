@@ -31,6 +31,5 @@ class User < ApplicationRecord
 
 # <<アソシエーション>>
 has_many :items
-has_many :order
 has_many :orders
 end
