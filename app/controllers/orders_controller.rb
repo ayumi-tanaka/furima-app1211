@@ -10,6 +10,9 @@ class OrdersController < ApplicationController
 
   def create
     @item_order = PayForm.new(item_order_params)
+    if @item_order.valid?
+    end
+    render 'index'
   end
 
   private
