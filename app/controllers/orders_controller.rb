@@ -9,12 +9,26 @@ class OrdersController < ApplicationController
   end
 
   def create
+    @item_order = PayForm.new(item_order_params)
   end
 
   private
 
   def select_item
     @item = Item.find(params[:item_id])
+  end
+
+  def item_order_params
+    params.permit(
+      :item_id,
+      :token,
+      :postal_code,
+      :prefecture_id,
+      :city,
+      :addresses,
+      :building,
+      :phone_number
+    ).merge(user_id: current_user.id)
   end
 
 end
